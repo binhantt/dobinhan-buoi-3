@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sản phẩm</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Danh sách sản phẩm</h1>
+        <button class="btn-load" onclick="getAll()">Tải sản phẩm</button>
+        <div class="controls" style="text-align:center; margin-top:12px;">
+            <label style="color:#333; font-weight:600;">Số mục mỗi trang:
+                <select id="perPageSelect" style="margin-left:8px; padding:6px;">
+                    <option value="5">5</option>
+                    <option value="10" selected>10</option>
+                    <option value="20">20</option>
+                </select>
+            </label>
+        </div>
+        <div class="loading" id="loading" style="display:none;">
+            <p>Đang tải dữ liệu...</p>
+        </div>
+
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Hình ảnh</th>
+                    <th>
+                        Tên sản phẩm
+                        <button id="sort-title" class="sort-btn" onclick="toggleSort('title')" title="Sắp xếp theo tên">⇅</button>
+                    </th>
+                    <th>
+                        Giá
+                        <button id="sort-price" class="sort-btn" onclick="toggleSort('price')" title="Sắp xếp theo giá">⇅</button>
+                    </th>
+                    <th class="description-header">Mô tả</th>
+                </tr>
+            </thead>
+            <tbody id="productTableBody">
+                <tr>
+                    <td colspan="5" class="text-center">Nhấn nút "Tải sản phẩm" để xem danh sách</td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="pagination" class="pagination"></div>
+    </div>
+
+    <script src="pagination.js"></script>
+    <script src="sort.js"></script>
+    <script src="hover.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

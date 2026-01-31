@@ -1,0 +1,268 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #10b981 0%, #f472b6 100%); /* green -> pink */
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.btn-load {
+    background: linear-gradient(135deg, #10b981 0%, #f472b6 100%);
+    color: #fff;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    transition: transform 0.12s, box-shadow 0.12s;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-load:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-load:active {
+    transform: translateY(0);
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    background: #f0f0f0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.loading p {
+    color: #065f46; /* dark green */
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.product-table thead {
+    background: #065f46; /* deep green header */
+    color: #fff;
+}
+
+.product-table th {
+    padding: 15px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.product-table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.product-table tbody tr:nth-child(even) {
+    background-color: #fff1f2; /* very light pink */
+    color: #051225; /* dark text */
+}
+
+.product-table tbody tr:hover {
+    background: rgba(16,185,129,0.06); /* subtle green hover */
+}
+
+.product-table td {
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    vertical-align: middle;
+}
+
+.product-table tbody tr:nth-child(even) td {
+    border-bottom: 1px solid #444;
+}
+
+.product-image {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 8px;
+    display: block;
+    border: 1px solid rgba(5,18,37,0.06);
+    background: #fff;
+}
+
+/* multiple images container in a cell */
+.product-images {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+.product-images .product-image {
+    width: 80px;
+    height: 80px;
+}
+
+.product-name {
+    font-weight: bold;
+    color: inherit;
+}
+
+.product-price {
+    color: #059669; /* emerald */
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.product-table tbody tr:nth-child(even) .product-price {
+    color: #db2777; /* pink for alternating rows price */
+}
+
+.product-description {
+    font-size: 12px;
+    max-width: 300px;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.text-center {
+    text-align: center;
+    font-style: italic;
+    color: #999;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .product-table {
+        font-size: 12px;
+    }
+
+    .product-table th,
+    .product-table td {
+        padding: 10px;
+    }
+
+    .product-image {
+        max-width: 60px;
+        max-height: 60px;
+    }
+
+    .product-description {
+        max-width: 150px;
+    }
+}
+
+/* Pagination styles */
+.pagination {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.pagination .page-btn {
+    margin: 0 4px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    background: #f8fafc;
+    cursor: pointer;
+    color: #065f46;
+    font-weight: 600;
+}
+
+.pagination .page-btn.active {
+    background: #f472b6; /* pink */
+    color: #fff;
+}
+
+.pagination .page-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Sort button styles */
+.sort-btn {
+    margin-left: 8px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: transparent;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.sort-btn.active {
+    background: #f472b6;
+    color: #fff;
+    border-color: rgba(244,114,182,0.9);
+}
+
+.sort-btn[data-dir="asc"]::after {
+    content: " ↑";
+}
+.sort-btn[data-dir="desc"]::after {
+    content: " ↓";
+}
+
+/* Hide the description column in the table; show via tooltip on hover */
+.product-table th.description-header,
+.product-table td.product-description {
+    display: none;
+}
+
+/* Tooltip style for description shown on hover */
+.desc-tooltip {
+    max-width: 360px;
+    background: #ffffff;
+    color: #222;
+    border: 1px solid rgba(0,0,0,0.08);
+    padding: 10px 12px;
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    font-size: 13px;
+    line-height: 1.4;
+    pointer-events: none;
+}
+
+.desc-tooltip.visible {
+    pointer-events: none;
+}
